@@ -2,10 +2,13 @@ import PySimpleGUI as sg
 import analyze as an
 
 
-
+#lista con las distintas categorias de juegos
 games_categories = ['ALL','ACTION','ADVENTURE','ARCADE','BOARD','CARD','CASINO','CASUAL','EDUCATIONAL','MUSIC','PUZZLE','RACING','ROLE PLAYING','SIMULATION','SPORTS','STRATEGY','TRIVIA','WORD']
 
+
 def create_layout():
+    '''Se crea el layout de la ventana principal del programa, con un titulo, botones y
+    cuadros para ingresar la informacion'''
 
     layout = [[sg.Text('Datos disponibles \npara analizar', font = '_ 20', relief = sg.RELIEF_RIDGE, justification = 'center', background_color = '#6E402A')],
             [sg.Text('', background_color = '#D89156')],
@@ -15,10 +18,10 @@ def create_layout():
     return sg.Window('Actividad 1 x Python Plus - TEORIA', layout, background_color = '#D89156', margins = (75,50), finalize = True)
 
 
-
 def main():
+    '''Se abre la ventan que contiene la interfaz del programa y que acciona los botones'''
+
     window = create_layout()
-    
     while True:    
         event, values = window.read()
         
