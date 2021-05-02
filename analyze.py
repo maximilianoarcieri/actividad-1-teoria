@@ -14,7 +14,6 @@ def isSpecial(c):
     return c in ["'",'[',']',"\""]
 
 
-
 def music_analysis(name):
     '''Se analizan las 20 canciones más populares del artista indicado'''
 
@@ -52,7 +51,7 @@ def music_analysis(name):
                 artist = ''.join(c for c in name if c != ' ').lower()
                 with open(f"{ruta}{artist}_songs.json", "w", encoding = "utf-8") as file:
                     json.dump(data, file, indent = 4, ensure_ascii = False)
-                sg.PopupQuick(f"""Se generó el archivo con las canciones de "{name}" más populares!""", auto_close = False, background_color = '#D89156', button_color = '#6E402A', text_color = 'black')
+                sg.PopupQuick(f"""Se generó el archivo con las {len(data['Canciones'])} canciones de "{name}" más populares!""", auto_close = False, background_color = '#D89156', button_color = '#6E402A', text_color = 'black')
             else:
                 sg.PopupQuick(f"""No se encontraron canciones de "{name}".""", auto_close = False, background_color = '#D89156', button_color = '#6E402A', text_color = 'black')                
     
@@ -60,9 +59,9 @@ def music_analysis(name):
         sg.PopupQuick("No se encontró la ruta del archivo.", background_color = '#D89156', button_color = '#6E402A', text_color = 'black')
 
 
-
 def game_analysis(category):
-    '''Se analizan los 20 juegos mejor valorados de la categoria indicada'''
+    '''Se analizan los 20 juegos mejor valorados de la categoria indicada o bien, entre 
+    todos los juegos'''
 
     try:
         with open(f"{ruta}android-games.csv", "r", encoding = "utf-8") as games:
@@ -89,7 +88,7 @@ def game_analysis(category):
             
             with open(f"{ruta}{category.lower()}_games.json", "w", encoding = "utf-8") as file:
                 json.dump(data, file, indent = 4, ensure_ascii = False)
-            sg.PopupQuick(f"""Se generó el archivo con los 20 juegos "{category.capitalize()}" más descargados!""", auto_close = False, background_color = '#D89156', button_color = '#6E402A', text_color = 'black')
+            sg.PopupQuick(f"""Se generó el archivo con los 20 juegos "{category.capitalize()}" mejor valorados!""", auto_close = False, background_color = '#D89156', button_color = '#6E402A', text_color = 'black')
     
     except FileNotFoundError:
         sg.PopupQuick("No se encontró la ruta del archivo.", background_color = '#D89156', button_color = '#6E402A', text_color = 'black')
