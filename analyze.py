@@ -37,7 +37,7 @@ def music_analysis(name):
                         artist = ''.join(c for c in artist_songs[i][5] if (not isSpecial(c)))
                         data['Canciones'].append({
                             'Cancion' : f'{artist_songs[i][1]}',
-                            'Puntaje' : f'{artist_songs[i][2]}',
+                            'Ratings' : f'{artist_songs[i][2]}',
                             'Artistas' : f'{artist}'
                         })
                     except UnicodeEncodeError:
